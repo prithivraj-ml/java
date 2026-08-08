@@ -1,0 +1,75 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Form</title>
+
+    <!-- AngularJS Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- Our JavaScript -->
+    <script src="App.js"></script>
+</head>
+
+<body ng-controller="FormController">
+
+    <h1>Contact Form</h1>
+
+    <form>
+
+        <label for="email">Email:</label>
+        <input
+            type="email"
+            id="email"
+            ng-model="user.email"
+        >
+
+        <br><br>
+
+        <label for="message">Message:</label>
+
+        <br>
+
+        <textarea
+            id="message"
+            ng-model="user.message">
+        </textarea>
+
+        <br><br>
+
+        <button
+            type="button"
+            ng-click="submitForm()">
+            Submit
+        </button>
+
+    </form>
+
+</body>
+
+</html>
+
+
+app.js
+
+angular.module("app", [])
+
+.controller("FormController", ["$scope", function($scope) {
+
+    // Object to store form data
+    $scope.user = {};
+
+    $scope.submitForm = function() {
+
+        // Access form data through $scope.user
+
+        alert("Form submitted successfully!");
+
+        console.log("Email:", $scope.user.email);
+        console.log("Message:", $scope.user.message);
+    };
+
+}]);
